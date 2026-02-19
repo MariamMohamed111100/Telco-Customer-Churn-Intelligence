@@ -4,6 +4,7 @@ import numpy as np
 import joblib
 import plotly.graph_objects as go
 import shap
+import os
 
 # =============================
 # Page Config
@@ -17,9 +18,9 @@ st.set_page_config(
 # =============================
 # Load Model
 # =============================
-@st.cache_resource
 def load_model():
-    return joblib.load("../Model/churn_model_production.pkl")
+    model_path = os.path.join(os.path.dirname(__file__), "..", "Model", "churn_model_production.pkl")
+    return joblib.load(model_path)
 
 model = load_model()
 
